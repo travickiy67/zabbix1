@@ -55,7 +55,26 @@
 **Устанавливаем Zabbix сервер и веб-интерфейс**  
 `apt install zabbix-server-pgsql zabbix-frontend-php php8.3-pgsql zabbix-apache-conf zabbix-sql-scripts`  
 
-![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img1.1.png)
+**Cоздаем базу данных и пароль**
+```
+`sudo -u postgres createuser --pwprompt zabbix
+ sudo -u postgres createdb -O zabbix zabbix
+ zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix`
+```
+**Редактируем файл /etc/zabbix/zabbix_server.conf, вписываем созданный пароль**
+`DBPassword=password`  
+
+**Запускаем и включаем автозапуск**
+```
+`systemctl restart zabbix-server zabbix-agent apache2
+ systemctl enable zabbix-server zabbix-agent apache2`
+```
+
+![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img1.1.png)  
+**Авторизация**
+![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img1.2.png)  
+
+![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img1.3.png)  
 ---
 
 ### Задание 2 
