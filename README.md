@@ -132,7 +132,7 @@ systemctl enable zabbix-agent
 --- 
 ![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img3.1.png)
 
-**Установден на реальной машине**
+**Установлен на реальной машине**
 
 ![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img3.2.png)
 ## Критерии оценки
