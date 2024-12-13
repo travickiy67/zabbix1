@@ -46,32 +46,32 @@
 `sudo apt install postgresql`  
 **Запускаем сеанс оболочки с повышенными привелегиями**  
 `sudo -s`  
-**Устанавливаем репозиторий Zabbix**
+**Устанавливаем репозиторий Zabbix**  
 ```
-`wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu24.04_all.deb
+ wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu24.04_all.deb
  dpkg -i zabbix-release_latest_7.0+ubuntu24.04_all.deb
- apt update`
+ apt update.
 ```
 **Устанавливаем Zabbix сервер и веб-интерфейс**  
 `apt install zabbix-server-pgsql zabbix-frontend-php php8.3-pgsql zabbix-apache-conf zabbix-sql-scripts`  
 
-**Cоздаем базу данных и пароль**
+**Cоздаем базу данных и пароль**  
 ```
-`sudo -u postgres createuser --pwprompt zabbix
+ sudo -u postgres createuser --pwprompt zabbix
  sudo -u postgres createdb -O zabbix zabbix
- zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix`
+ zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
 ```
-**Редактируем файл /etc/zabbix/zabbix_server.conf, вписываем созданный пароль**
+**Редактируем файл /etc/zabbix/zabbix_server.conf, вписываем созданный пароль**  
 `DBPassword=password`  
 
-**Запускаем и включаем автозапуск**
+**Запускаем и включаем автозапуск**  
 ```
-`systemctl restart zabbix-server zabbix-agent apache2
- systemctl enable zabbix-server zabbix-agent apache2`
+ systemctl restart zabbix-server zabbix-agent apache2
+ systemctl enable zabbix-server zabbix-agent apache2
 ```
 
 ![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img1.1.png)  
-**Авторизация**
+**Авторизация**  
 ![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img1.2.png)  
 
 ![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img1.3.png)  
@@ -94,6 +94,35 @@
 3. Приложите в файл README.md скриншот раздела Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные.
 4. Приложите в файл README.md текст использованных команд в GitHub
 
+**Повышаем привилегии**  
+`sudo -s`  
+
+**Устанавливаем репозитарий.**  
+```
+wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb
+dpkg -i zabbix-release_latest_7.0+ubuntu22.04_all.deb
+apt update
+```
+**Устанавливаем агента**  
+`apt install zabbix-agent`  
+
+**Запускаем**  
+```
+systemctl restart zabbix-agent
+systemctl enable zabbix-agent
+```
+![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img2.1.png)
+
+**сединение отклонено**  
+![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img2.7.png)
+
+![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img2.6.png)
+
+**Редактируем файл, /etc/zabbix/zabbix_agentd.conf, перезагружаем и проверяем статус**  
+
+![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img2.3.png)
+
+![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img2.4.png)
 ---
 ## Задание 3 со звёздочкой*
 Установите Zabbix Agent на Windows (компьютер) и подключите его к серверу Zabbix.
