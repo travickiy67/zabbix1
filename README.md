@@ -114,7 +114,7 @@ systemctl enable zabbix-agent
 ![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img2.1.png)
 
 **сединение отклонено**  
-![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img2.7.png)
+![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img2.8.png)
 
 ![alt text](https://github.com/travickiy67/zabbix1/blob/main/img/img2.6.png)
 
